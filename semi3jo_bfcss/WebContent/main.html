@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The web-site for group study</title>
+<link href="/semi3jo_bfcss/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+<script src="/semi3jo_bfcss/bootstrap/js/jquery-2.1.1.js"></script>
+<script src="/semi3jo_bfcss/bootstrap/js/bootstrap.js"></script>
+<style>
+      body {
+        margin: 0;
+      }
+      #fixed-menu {
+        width: 100%;
+        background-color: #ffffff;
+      }
+      #main-content {
+        width: 100%;
+      }
+      #fixed-menu li {
+        display: inline-block;
+        margin-right: 30px;
+      }
+      img {
+        max-width: 100%;
+      }
+</style>
+<script>
+	window.onload = function(){
+		document.f.id.focus();
+	}
+</script>
+</head>
+<body>
+
+ <div class="container">
+    	<div id="fixed-menu">
+    	</div>
+		
+		<form name="f" method="post" action="member_login.ma">
+			<input type="hidden" name="cmd" value="login"/>
+			<div align="center">
+	    		<div id="main-content">	    		
+	    		<img src="/semi3jo_bfcss/bootstrap/img/logo.jpg" width="400px" height="auto" style="margin-top: 150px">
+	    	</div>
+    		<div style="height: 70px"></div>
+    		<input type="text" placeholder="ID" name="id" id="id"/><br/>
+    		<input type="password" placeholder="Password" name="pw"/><br/>
+    		
+    		<div>
+    			<button type="submit" class="btn">로그인</button>
+ 				<input class="btn" type="button" onClick="location.href='/semi3jo_bfcss/member_join.html'" value="회원가입"/><br/><br/>
+ 			</div>
+			</div>
+		</form>
+</div>
+</body>
+</html>
+<!-- noresize는 프레임의 크기를 사용자가 조정할 수 없게 함 -->

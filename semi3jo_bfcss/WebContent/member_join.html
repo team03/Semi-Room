@@ -1,0 +1,134 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+<title>회원가입하기</title>
+
+<link rel ="stylesheet" type = "text/css" href="test.css">
+
+<style type = "text/css">
+<!--
+	.tcolor
+	{background-color : skyblue; border-color: skyblue;}
+	
+	.t2color
+	{border-style:inset; border-color:skyblue;}
+
+-->
+</style>
+
+<script src="/semi3jo/bootstrap/js/check.js"></script>  <!-- check.js 선언 -->
+<script>
+function fnChkForm(f){     
+	if(isEmpty(f.name, "이름을 입력해주세요.")){
+		return false;
+	}
+    
+	if(isEmpty(f.phone, "전화번호를 입력해주세요.")){
+		return false;
+	}
+	
+	if(isEmpty(f.zip1, "우편번호를 검색하세요.")){
+		return false;
+	}
+	
+	if(isEmpty(f.zip2, "우편번호를 검색하세요.")){
+		return false;
+	}
+	
+	if(isEmpty(f.address, "주소를 입력해주세요.")){
+		return false;
+	}
+	if(isEmail(f.email)){
+		alert("유효하지 않는 e-mail입니다.");
+		return false;
+	}
+	
+	if(isId(f.id)){
+		return false;
+	}
+	
+	if(isCorrect_pw(f.pw, f.pw2)){
+		alert("패스워드가 일치하지 않습니다.");
+		return false;
+	}
+	
+	var idDupChk = document.f.idDupChk.value;
+    if(idDupChk == 't'){
+        return true;
+    }else {
+        alert('아이디 중복체크를 해주세요');
+        return false;
+    }
+	return false;
+}
+function fnZipSearch(){
+	window.open("/semi3jo_bfcss/zipSearch.jsp","","toolbars=no, width=500, height=400, status=no, scrollbars=yes, menubars=no");
+}
+function fnIdcheck(){
+	var id = document.f.id.value;
+	if(id.length<1 || id==null){
+		alert("중복체크할 아이디를 입력하세요");
+		return false;	
+	}
+	opener();
+}
+function opener(){
+	window.open("idCheck.jsp", "", "height = 200, width = 300");
+
+}
+</script>
+</head>
+<body>
+<center>
+<br><br><br><br>
+	<form name="f" method="post" action = "member_join.ma" onsubmit="return fnChkForm(this)">
+	<input type="hidden" name="cmd" value="sign_up"/>
+	<input type="hidden" name="idDupChk" value="f"/>
+	<table border  = "1" bordercolor = "blue" bgcolor = "white"  width = "700"	height = "300" align ="center">
+	
+	<caption><h2>회 원 가 입 하 기</font></h2></caption>
+
+	<tr>
+	<td align = "right" class = "tcolor" >아이디</td>
+	<td align = "left" class = "t2color"><input type = "text" name = "id" size = "10" onclick="opener()"> <input type = "button" name="idcheck" value ="중복검사" onclick="fnIdcheck()"></td>
+	</tr>
+	
+	<tr>
+	<td align = "right" class = "tcolor">비밀번호</td>
+	<td align = "left" class = "t2color"><input type = "password" name = "pw" size = "10"> 비밀번호 확인 <input type = "password" name = "pw2" size = "12"> </td>
+	</tr>
+	
+	<tr>
+	<td align = "right" class = "tcolor">이름</td>
+	<td align = "left" class = "t2color"><input type = "text" name = "name" size = "10"></td>
+	</tr>
+
+	<tr>
+	<td align = "right" class = "tcolor">전화번호</td>
+	<td align = "left" class = "t2color"><input type = "text" name = "phone" size = "20" maxlength="13"></td>
+	</tr>
+
+	<tr>
+	<td align = "right" class = "tcolor">이메일</td>
+	<td align = "left" class = "t2color"><input type = "text" name = "email" size = "20"></td>
+	</tr>
+
+	<tr>
+	<td align = "right" class = "tcolor">주소</td>
+	<td align = "left" class = "t2color"><input type = "text" name = "zip1" maxlength=3 size = "3">-<input type = "text" name = "zip2" maxlength=3 size = "3"> 
+	<input type="button" value="조회" onclick="fnZipSearch()"><br/>
+	<input type = "text" name = "address" size = "50"></td>
+	</tr>
+
+	<tr align = "center">
+	<td colspan = 2  class = "t2color"><input type="submit" value="가입하기">&nbsp;<input type="reset" value = 재입력></td>
+	</tr>
+
+	</table>
+	</form>
+	
+</center>
+</body>
+</html>
+
